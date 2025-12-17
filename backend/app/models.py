@@ -110,6 +110,10 @@ class StrategyConfig:
     max_games_with_4_blocks: int = 3
     must_cover_terminals: bool = True
     allow_zebra_parity_extreme: bool = True
+    max_repeat_last_draw_per_game: int = 1
+    max_repeat_last_draw_per_number_portfolio: int = 3
+    candidate_pool_size: int = 5000
+    repair_attempts: int = 200
 
 
 strategy_config = StrategyConfig()

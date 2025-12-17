@@ -4,11 +4,11 @@ Protótipo inicial do backend para a Estratégia Mega-Sena v2.9 (cobertura avan�
 
 ## Estado atual (não está pronto para produção)
 
-> **A aplicação está pronta?** Ainda não. Ela é apenas um esqueleto de API; não gera apostas reais e não faz ingestão de resultados automaticamente. Use apenas para experimentar o modelo e evoluir o código.
-- Endpoints disponíveis: `/health`, `/config`, `/anchors` (cálculo inicial de score), `/generate` (placeholder com números fixos).
+> **A aplicação está pronta?** Parcialmente. Ainda não há ingestão automática de resultados nem persistência/autenticação, mas o endpoint `/generate` agora monta um portfólio de 12 jogos (S/H/Z/A) respeitando guard-rails básicos, limites globais de overlap/exposição e cobertura de terminais.
+- Endpoints disponíveis: `/health`, `/config`, `/anchors` (cálculo inicial de score), `/generate` (geração heurística).
 - Regras codificadas: modelos de cluster, restrições gerais e cálculo básico de métricas/âncoras.
 - Itens faltantes para considerar um MVP jogável:
-  - Implementar o pipeline completo de geração (candidatos, filtros por cluster, ranking, overlap/caps globais, repair step, seleção de 3 apostas).
+  - Refinar o pipeline de geração (ranking/score, seleção ótima por cluster, seleção automática das 3 apostas preferenciais) — hoje é heurístico e pode falhar se as restrições forem muito estritas.
   - Ingestão de histórico (upload XLSX) e backtests reais; hoje os endpoints dependem de dados enviados manualmente.
   - Autenticação, persistência (SQLite) e governança de versões/aprovações.
   - Ajuste de anchor score para incluir viés de ciclo (R10/R20) e parâmetros configuráveis.
@@ -34,7 +34,7 @@ Protótipo inicial do backend para a Estratégia Mega-Sena v2.9 (cobertura avan�
    - `GET /health` — status e versão do modelo.
    - `GET /config` — clusters e restrições configuradas.
    - `POST /anchors` — calcula scores de âncoras a partir de histórico enviado.
-   - `POST /generate` — cria um portfólio placeholder usando métricas e âncoras (substituir pelo pipeline completo nas próximas iterações).
+  - `POST /generate` — gera um portfólio heurístico (12 jogos S/H/Z/A) respeitando guard-rails básicos.
 
 ## Próximos passos
 - Implementar pipeline completo de geração conforme `docs/strategy_v2.9.md` (candidatos, filtros, ranking, repair).
