@@ -3,6 +3,8 @@
 Protótipo inicial do backend para a Estratégia Mega-Sena v2.9 (cobertura avançada). O foco é expor endpoints básicos, consolidar as regras e permitir evolução iterativa.
 
 ## Estado atual (não está pronto para produção)
+
+> **A aplicação está pronta?** Ainda não. Ela é apenas um esqueleto de API; não gera apostas reais e não faz ingestão de resultados automaticamente. Use apenas para experimentar o modelo e evoluir o código.
 - Endpoints disponíveis: `/health`, `/config`, `/anchors` (cálculo inicial de score), `/generate` (placeholder com números fixos).
 - Regras codificadas: modelos de cluster, restrições gerais e cálculo básico de métricas/âncoras.
 - Itens faltantes para considerar um MVP jogável:
